@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+</head>
+<body>
+  <!-- Header with Score -->
+  <header class="header">
+    <div class="logo">
+      <img src="./images/logo.svg" alt="Rock Paper Scissors Logo">
+    </div>
+    <div class="score-container">
+      <p class="score-title">Score</p>
+      <p class="score">0</p>
+    </div>
+  </header>
+
+  <!-- Game Board -->
+  <main>
+    <div class="game-board">
+      <img src="./images/bg-triangle.svg" alt="Triangle" class="triangle">
+      <div class="choices">
+        <div class="choice paper" data-choice="paper">
+          <div class="choice-inner">
+            <img src="./images/icon-paper.svg" alt="Paper">
+          </div>
+        </div>
+        <div class="choice scissors" data-choice="scissors">
+          <div class="choice-inner">
+            <img src="./images/icon-scissors.svg" alt="Scissors">
+          </div>
+        </div>
+        <div class="choice rock" data-choice="rock">
+          <div class="choice-inner">
+            <img src="./images/icon-rock.svg" alt="Rock">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Result -->
+    <div class="game-result">
+      <div class="result-container">
+        <div class="pick">
+          <h2 class="pick-title">You Picked</h2>
+          <div class="user-pick"></div>
+        </div>
+
+        <div class="result-message" style="display: none;">
+          <h1 class="result-text">You Win</h1>
+          <button class="play-again">Play Again</button>
+        </div>
+
+        <div class="pick">
+          <h2 class="pick-title">The House Picked</h2>
+          <div class="house-pick"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rules Button -->
+  <button class="rules-btn">Rules</button>
+
+  <!-- Rules Modal -->
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Rules</h2>
+        <button class="close-btn">
+          <img src="./images/icon-close.svg" alt="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./images/image-rules.svg" alt="Rules">
+      </div>
+    </div>
+  </div>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/yourusername">Your Name</a>.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

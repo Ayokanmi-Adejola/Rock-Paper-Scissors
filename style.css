@@ -1,0 +1,514 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+/* Variables */
+:root {
+  /* Primary Colors */
+  --scissors-gradient-from: hsl(39, 89%, 49%);
+  --scissors-gradient-to: hsl(40, 84%, 53%);
+  --paper-gradient-from: hsl(230, 89%, 62%);
+  --paper-gradient-to: hsl(230, 89%, 65%);
+  --rock-gradient-from: hsl(349, 71%, 52%);
+  --rock-gradient-to: hsl(349, 70%, 56%);
+
+  /* Neutral Colors */
+  --dark-text: hsl(229, 25%, 31%);
+  --score-text: hsl(229, 64%, 46%);
+  --header-outline: hsl(217, 16%, 45%);
+
+  /* Background */
+  --background-from: hsl(214, 47%, 23%);
+  --background-to: hsl(237, 49%, 15%);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--background-from), var(--background-to));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  border: 3px solid var(--header-outline);
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.logo img {
+  height: 80px;
+}
+
+.score-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  text-align: center;
+}
+
+.score-title {
+  color: var(--score-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.score {
+  color: var(--dark-text);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Game Board */
+.game-board {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.triangle {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
+}
+
+.choices {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.choice {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.choice:hover {
+  transform: scale(1.1);
+}
+
+.choice-inner {
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Placeholder for house pick */
+.placeholder {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  animation: pulse 1s infinite;
+}
+
+.placeholder-inner {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.paper {
+  background: linear-gradient(to bottom, var(--paper-gradient-from), var(--paper-gradient-to));
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.scissors {
+  background: linear-gradient(to bottom, var(--scissors-gradient-from), var(--scissors-gradient-to));
+  top: 0;
+  right: 0;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.rock {
+  background: linear-gradient(to bottom, var(--rock-gradient-from), var(--rock-gradient-to));
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Game Result */
+.game-result {
+  display: none;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.result-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.pick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pick-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3rem;
+}
+
+.result-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-text {
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.play-again {
+  background-color: white;
+  color: var(--dark-text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-again:hover {
+  background-color: #f8f8f8;
+}
+
+/* Rules Button and Modal */
+.rules-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: transparent;
+  color: white;
+  border: 2px solid var(--header-outline);
+  border-radius: 8px;
+  padding: 0.8rem 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.rules-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  max-width: 400px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.modal-title {
+  color: var(--dark-text);
+  text-transform: uppercase;
+  font-size: 1.8rem;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Attribution */
+.attribution {
+  margin-top: auto;
+  padding: 1rem;
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.8rem 1.5rem;
+    max-width: 500px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .score-container {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .score {
+    font-size: 2.5rem;
+  }
+
+  .choice {
+    width: 110px;
+    height: 110px;
+  }
+
+  .choice-inner {
+    width: 85px;
+    height: 85px;
+  }
+
+  .result-container {
+    flex-direction: column;
+  }
+
+  .pick {
+    margin-bottom: 2rem;
+  }
+
+  .rules-btn {
+    position: static;
+    margin-top: 2rem;
+  }
+
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .close-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  body {
+    padding: 0.8rem;
+  }
+
+  .header {
+    padding: 0.6rem 1rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    border-width: 2px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .score-container {
+    padding: 0.5rem 1.2rem;
+  }
+
+  .score-title {
+    font-size: 0.7rem;
+  }
+
+  .score {
+    font-size: 2rem;
+  }
+
+  .game-board {
+    max-width: 300px;
+  }
+
+  .triangle {
+    max-width: 200px;
+  }
+
+  .choice {
+    width: 100px;
+    height: 100px;
+  }
+
+  .choice-inner {
+    width: 75px;
+    height: 75px;
+  }
+
+  .choice-inner img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .result-text {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .play-again {
+    padding: 0.6rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .rules-btn {
+    padding: 0.6rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-body img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Small mobile phones */
+@media (max-width: 375px) {
+  .header {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .score-container {
+    padding: 0.4rem 1rem;
+  }
+
+  .score-title {
+    font-size: 0.6rem;
+  }
+
+  .score {
+    font-size: 1.8rem;
+  }
+
+  .game-board {
+    max-width: 250px;
+  }
+
+  .triangle {
+    max-width: 180px;
+  }
+
+  .choice {
+    width: 80px;
+    height: 80px;
+  }
+
+  .choice-inner {
+    width: 60px;
+    height: 60px;
+  }
+
+  .choice-inner img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .pick-title {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-text {
+    font-size: 1.8rem;
+  }
+
+  .play-again {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .rules-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
