@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Rock Paper Scissors Game]()
+- Live Site URL: [Rock Paper Scissors Game](https://www.frontendmentor.io/profile/Ayokanmi-Adejola)
 
 ## My process
 
