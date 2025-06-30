@@ -18,9 +18,7 @@ Users should be able to:
 
 ![Rock Paper Scissors Game](./design/desktop-preview.jpg)
 
-### Links
 
-- Live Site URL: [Rock Paper Scissors Game](https://ayokanmi-adejola.github.io/Rock-Paper-Scissors/)
 
 ## My process
 
